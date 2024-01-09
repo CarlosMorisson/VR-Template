@@ -10,14 +10,19 @@ namespace UnityEngine.XR.Content.Interaction
         [SerializeField]
         [Tooltip("The transform of the FlippyDoor that will be rotated")]
         Transform m_Transform;
-
+        public bool MoveX, MoveY, MoveZ;
         int m_Count;
 
         void Update()
         {
             var eulerAngles = m_Transform.eulerAngles;
             var desiredAngle = m_Count > 0 ? 90f : 0f;
-            eulerAngles.x = Mathf.LerpAngle(eulerAngles.x, desiredAngle, Time.deltaTime * 4f);
+            if (MoveX) 
+                eulerAngles.x = Mathf.LerpAngle(eulerAngles.x, desiredAngle, Time.deltaTime * 4f);
+            else if (MoveY)
+                eulerAngles.y = Mathf.LerpAngle(eulerAngles.y, desiredAngle, Time.deltaTime * 4f);
+            else
+                eulerAngles.z = Mathf.LerpAngle(eulerAngles.z, desiredAngle, Time.deltaTime * 4f);
             m_Transform.eulerAngles = eulerAngles;
         }
 

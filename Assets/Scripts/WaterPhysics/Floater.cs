@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Floater : MonoBehaviour
 {
+    [SerializeField]
     private Rigidbody rb;
     [SerializeField] 
     float depthBeforeSubmerged=1f;
@@ -17,19 +18,15 @@ public class Floater : MonoBehaviour
     GameObject Ocean;
     [SerializeField]
     float OceanSpeed;
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
-
     void FixedUpdate()
     {
-        Vector3 direction = this.transform.position - Ocean.transform.position;
-        direction.Normalize();
-        Ocean.transform.position += direction * OceanSpeed * Time.deltaTime;
+        //Vector3 direction = this.transform.position - Ocean.transform.position;
+        //direction.Normalize();
+        
         //
         rb.AddForceAtPosition(Physics.gravity / floaterCount, transform.position, ForceMode.Acceleration);
         float WaveHeight = WaveManager.instance.GetWaveHeight(transform.position.x);
+        //Ocean.transform.position += new Vector3(direction.x, 0f, direction.z) * OceanSpeed * Time.deltaTime;
         if (transform.position.y < WaveHeight)
         {
             float displacementMultiplier = Mathf.Clamp01((WaveHeight - transform.position.y) / depthBeforeSubmerged) * displacementAmount;
