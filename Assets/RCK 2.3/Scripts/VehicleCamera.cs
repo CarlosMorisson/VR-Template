@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
+using UnityEngine.XR.Content.Interaction;
+
 public class VehicleCamera : MonoBehaviour
 {
 
@@ -19,8 +21,8 @@ public class VehicleCamera : MonoBehaviour
 
     public CarUIClass CarUI;
 
-
-
+    public XRKnob Steer;
+    public XRLever Gear;
     private float yVelocity = 0.0f;
     private float xVelocity = 0.0f;
     [HideInInspector]
@@ -128,13 +130,23 @@ public class VehicleCamera : MonoBehaviour
     }
 
 
-
+    public void RotateSteer()
+    {
+        CarSteer(Steer.value);
+    }
+    public void Xlr8()
+    {
+        if (Gear.value)
+            CarAccelForward(-1);
+        else
+            CarAccelForward(1);
+    }
 
     public void ShowCarUI()
     {
 
 
-
+        /*
         gearst = carScript.currentGear;
         CarUI.speedText.text = ((int)carScript.speed).ToString();
 
@@ -194,7 +206,7 @@ public class VehicleCamera : MonoBehaviour
         thisAngle = Mathf.Clamp(thisAngle, -180, 90);
 
         CarUI.tachometerNeedle.rectTransform.rotation = Quaternion.Euler(0, 0, -thisAngle);
-        CarUI.barShiftGUI.rectTransform.localScale = new Vector3(carScript.powerShift / 100.0f, 1, 1);
+        CarUI.barShiftGUI.rectTransform.localScale = new Vector3(carScript.powerShift / 100.0f, 1, 1);*/
 
     }
 
