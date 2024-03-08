@@ -13,7 +13,7 @@ public class VehicleControl : MonoBehaviour
     public ControlMode controlMode = ControlMode.simple;
 
     public bool activeControl = false;
-    public float sideSpeed;
+
 
     // Wheels Setting /////////////////////////////////
 
@@ -464,7 +464,9 @@ public class VehicleControl : MonoBehaviour
 
     void FixedUpdate()
     {
-       // speed of car
+
+
+        // speed of car
         speed = myRigidbody.velocity.magnitude * 2.7f;
 
 
@@ -489,8 +491,18 @@ public class VehicleControl : MonoBehaviour
 
 
 
-        steer = Mathf.MoveTowards(steer, steerAmount, 0.07f);
-        if (accelFwd != 0) { accel = accelFwd; } else { accel = accelBack; }
+        if (activeControl)
+        {
+            steer = Mathf.MoveTowards(steer, steerAmount, 0.07f);
+            if (accelFwd != 0) { accel = accelFwd; } else { accel = accelBack; }
+        }
+        else
+        {
+            accel = 0.0f;
+            steer = 0.0f;
+            brake = false;
+            shift = false;
+        }
 
 
 
@@ -553,7 +565,7 @@ public class VehicleControl : MonoBehaviour
       //  carSetting.shiftCentre.x = -Mathf.Clamp(steer * (speed / 100), -0.03f, 0.03f);
 
 
-        
+
         // Brake Lights
 
         foreach (Light brakeLight in carLights.brakeLights)
@@ -602,7 +614,7 @@ public class VehicleControl : MonoBehaviour
 
 
 
-        
+
         foreach (WheelComponent w in wheels)
         {
             WheelHit hit;
@@ -614,7 +626,7 @@ public class VehicleControl : MonoBehaviour
                 {
                     rpm += accel * carSetting.idleRPM;
 
-                    
+                    /*
                     if (rpm > 1)
                     {
                         carSetting.shiftCentre.z = Mathf.PingPong(Time.time * (accel * 10), 2.0f) - 1.0f;
@@ -623,7 +635,7 @@ public class VehicleControl : MonoBehaviour
                     {
                         carSetting.shiftCentre.z = 0.0f;
                     }
-                    
+                    */
 
                 }
                 else

@@ -16,7 +16,7 @@ public class VehicleCamera : MonoBehaviour
     public float distance = 5.0f;
     public float height = 1.0f;
     public float Angle = 20;
-    public float speed;
+
     public LayerMask lineOfSightMask = 0;
 
     public CarUIClass CarUI;
@@ -137,9 +137,9 @@ public class VehicleCamera : MonoBehaviour
     public void Xlr8()
     {
         if (Gear.value)
-            CarAccelForward(-speed);
+            CarAccelForward(-1);
         else
-            CarAccelForward(speed);
+            CarAccelForward(1);
     }
 
     public void ShowCarUI()
