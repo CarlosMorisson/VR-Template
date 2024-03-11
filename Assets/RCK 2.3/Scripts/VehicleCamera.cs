@@ -132,14 +132,22 @@ public class VehicleCamera : MonoBehaviour
 
     public void RotateSteer()
     {
+        Debug.Log(Steer.value);
         CarSteer(Steer.value);
+
     }
     public void Xlr8()
     {
-        if (Gear.value)
-            CarAccelForward(-1);
+        if (Gear.value == false)
+        {
+            CarAccelForward(0);
+            CarAccelBack(-1);
+        }
         else
+        {
             CarAccelForward(1);
+            CarAccelBack(0);
+        }
     }
 
     public void ShowCarUI()
@@ -226,7 +234,7 @@ public class VehicleCamera : MonoBehaviour
 
     void Update()
     {
-
+        Xlr8();
         if (!target) return;
 
 
