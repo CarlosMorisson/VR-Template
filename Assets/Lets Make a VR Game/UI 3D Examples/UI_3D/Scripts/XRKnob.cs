@@ -87,8 +87,8 @@ namespace UnityEngine.XR.Content.Interaction
 
         [SerializeField]
         [Tooltip("The value of the knob")]
-        [Range(0.0f, 1.0f)]
-        float m_Value = 0.5f;
+        [Range(-1.0f, 1.0f)]
+        float m_Value = 0f;
 
         [SerializeField]
         [Tooltip("Whether this knob's rotation should be clamped by the angle limits")]
@@ -326,6 +326,7 @@ namespace UnityEngine.XR.Content.Interaction
 
             // Reverse to get value
             var knobValue = (knobRotation - m_MinAngle) / (m_MaxAngle - m_MinAngle);
+
             SetValue(knobValue);
         }
 
@@ -352,7 +353,7 @@ namespace UnityEngine.XR.Content.Interaction
         void SetValue(float value)
         {
             if (m_ClampedMotion)
-                value = Mathf.Clamp01(value);
+                value = Mathf.Clamp(value,-1,1);
 
             if (m_AngleIncrement > 0)
             {
@@ -361,7 +362,7 @@ namespace UnityEngine.XR.Content.Interaction
                 angle = Mathf.Round(angle / m_AngleIncrement) * m_AngleIncrement;
                 value = Mathf.InverseLerp(0.0f, angleRange, angle);
             }
-
+            Debug.Log(value);
             m_Value = value;
             m_OnValueChange.Invoke(m_Value);
         }
@@ -422,7 +423,7 @@ namespace UnityEngine.XR.Content.Interaction
         void OnValidate()
         {
             if (m_ClampedMotion)
-                m_Value = Mathf.Clamp01(m_Value);
+                m_Value = Mathf.Clamp(m_Value, -1, 1);
 
             if (m_MinAngle > m_MaxAngle)
                 m_MinAngle = m_MaxAngle;

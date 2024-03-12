@@ -20,7 +20,7 @@ public class VehicleCamera : MonoBehaviour
     public LayerMask lineOfSightMask = 0;
 
     public CarUIClass CarUI;
-
+    public Transform DriverPos;
     public XRKnob Steer;
     public XRLever Gear;
     private float yVelocity = 0.0f;
@@ -237,7 +237,7 @@ public class VehicleCamera : MonoBehaviour
         Xlr8();
         if (!target) return;
 
-
+        this.transform.position = DriverPos.transform.position;
         carScript = (VehicleControl)target.GetComponent<VehicleControl>();
 
 
