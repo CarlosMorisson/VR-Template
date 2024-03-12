@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using System;
 using UnityEngine.XR.Content.Interaction;
+using Photon.Pun;
 
 public class VehicleCamera : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class VehicleCamera : MonoBehaviour
     public float distance = 5.0f;
     public float height = 1.0f;
     public float Angle = 20;
-
+    public PhotonView view;
     public LayerMask lineOfSightMask = 0;
 
     public CarUIClass CarUI;
@@ -222,10 +223,12 @@ public class VehicleCamera : MonoBehaviour
 
     void Start()
     {
+        if (view.IsMine)
+        {
+            carScript = (VehicleControl)target.GetComponent<VehicleControl>();
 
-        carScript = (VehicleControl)target.GetComponent<VehicleControl>();
-
-        myRigidbody = target.GetComponent<Rigidbody>();
+            myRigidbody = target.GetComponent<Rigidbody>();
+        }
 
     }
 
@@ -234,43 +237,37 @@ public class VehicleCamera : MonoBehaviour
 
     void Update()
     {
-        Xlr8();
-        if (!target) return;
-
-        this.transform.position = DriverPos.transform.position;
-        carScript = (VehicleControl)target.GetComponent<VehicleControl>();
-
-
-
-        if (Input.GetKeyDown(KeyCode.G))
+        if (view.IsMine)
         {
-            RestCar();
+            Xlr8();
+            if (!target) return;
+
+            this.transform.position = DriverPos.transform.position;
+            carScript = (VehicleControl)target.GetComponent<VehicleControl>();
+
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                RestCar();
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Application.LoadLevel(Application.loadedLevel);
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                PoliceLightSwitch();
+            }
+
+
+            if (restTime != 0.0f)
+                restTime = Mathf.MoveTowards(restTime, 0.0f, Time.deltaTime);
+
+            ShowCarUI();
         }
-
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Application.LoadLevel(Application.loadedLevel);
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            PoliceLightSwitch();
-        }
-
-
-        if (restTime!=0.0f)
-        restTime=Mathf.MoveTowards(restTime ,0.0f,Time.deltaTime);
-
-
-
-
-        ShowCarUI();
-
-
-
-       
 
     }
 

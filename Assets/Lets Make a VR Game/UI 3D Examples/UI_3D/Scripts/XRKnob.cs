@@ -323,7 +323,7 @@ namespace UnityEngine.XR.Content.Interaction
                 knobRotation = Mathf.Clamp(knobRotation, m_MinAngle, m_MaxAngle);
 
             SetKnobRotation(knobRotation);
-
+            Debug.Log(knobRotation);
             // Reverse to get value
             var knobValue = (knobRotation - m_MinAngle) / (m_MaxAngle - m_MinAngle);
 
@@ -362,7 +362,6 @@ namespace UnityEngine.XR.Content.Interaction
                 angle = Mathf.Round(angle / m_AngleIncrement) * m_AngleIncrement;
                 value = Mathf.InverseLerp(0.0f, angleRange, angle);
             }
-            Debug.Log(value);
             m_Value = value;
             m_OnValueChange.Invoke(m_Value);
         }
