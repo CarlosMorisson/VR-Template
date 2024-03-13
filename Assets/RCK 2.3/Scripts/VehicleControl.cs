@@ -14,7 +14,6 @@ public class VehicleControl : MonoBehaviour
     public ControlMode controlMode = ControlMode.simple;
 
     public bool activeControl = false;
-
     PhotonView view;
     // Wheels Setting /////////////////////////////////
 

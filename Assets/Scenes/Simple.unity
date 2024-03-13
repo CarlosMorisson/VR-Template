@@ -3659,6 +3659,14 @@ PrefabInstance:
       propertyPath: CarUI.tachometerNeedle
       value: 
       objectReference: {fileID: 1814609012}
+    - target: {fileID: 1771587571802127503, guid: f7e1892824ca16b4980d87e47c2ce187, type: 3}
+      propertyPath: sceneViewId
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143509587496898437, guid: f7e1892824ca16b4980d87e47c2ce187, type: 3}
+      propertyPath: sceneViewId
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4372528441832613591, guid: f7e1892824ca16b4980d87e47c2ce187, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3703,6 +3711,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4548116497267517064, guid: f7e1892824ca16b4980d87e47c2ce187, type: 3}
+      propertyPath: sceneViewId
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5890163977901553911, guid: f7e1892824ca16b4980d87e47c2ce187, type: 3}
       propertyPath: m_Name
       value: RallyCar
@@ -3711,9 +3723,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6767214836722520041, guid: f7e1892824ca16b4980d87e47c2ce187, type: 3}
+      propertyPath: sceneViewId
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7882671980680913141, guid: f7e1892824ca16b4980d87e47c2ce187, type: 3}
       propertyPath: sceneViewId
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752858656061918072, guid: f7e1892824ca16b4980d87e47c2ce187, type: 3}
+      propertyPath: sceneViewId
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -1914,6 +1914,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: --XR-COMPONENTS----------------------
       objectReference: {fileID: 0}
+    - target: {fileID: 1321321896737649262, guid: 0614df52e24b86145af8d85b6bbb9fac, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 2023307723614914556, guid: 534053b397750e74588f25f926e8da72, type: 3}
     - target: {fileID: 4015630368988015378, guid: 0614df52e24b86145af8d85b6bbb9fac, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1958,6 +1962,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5441451878424366637, guid: 0614df52e24b86145af8d85b6bbb9fac, type: 3}
+      propertyPath: m_ModelPrefab
+      value: 
+      objectReference: {fileID: 7202180713189846825, guid: a543ce027c5ec3a4788c4f633673c3de, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
